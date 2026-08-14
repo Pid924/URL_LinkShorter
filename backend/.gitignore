@@ -1,0 +1,46 @@
+gitignore## Build outputs and binaries
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+## MSBuild and temporary build files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Roslyn and compiler caches
+.vs/
+.tlog/
+.unsuccessfulbuild
+*.generated
+
+## NuGet Packages and related build props
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+
+## ASP.NET Core specific local configuration
+appsettings.Development.json
+appsettings.Local.json
+
+## User-specific secrets and environment configurations
+.env
+.env.local
+.env.*.local
+usersecrets.json
+_secrets.json
+
+## Common IDEs and Editors
+# Visual Studio Code
+.vscode/
+!.vscode/extensions.json
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+## Operating System temporary files
+Thumbs.db
+.DS_Store
