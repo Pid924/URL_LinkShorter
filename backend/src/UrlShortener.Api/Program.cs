@@ -57,14 +57,14 @@ builder.Services.AddSwaggerGen(options =>
 var app = builder.Build();
 
 // Swagger is enabled in Development by default; remove the IsDevelopment check to expose it in other environments.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "URL Shortener API v1");
     });
-}
+//}
 
 app.UseHttpsRedirection();
 

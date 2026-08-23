@@ -86,6 +86,36 @@ lib/
   format.ts       Relative/absolute date formatting
 ```
 
+## Troubleshooting: "Couldn't reach the API" while using HTTPS
+
+If Postman and your browser can both reach `https://localhost:5001` but the dashboard can't,
+the cause is almost always TLS trust in **Node**, not CORS:
+
+`dotnet dev-certs https --trust` installs the dev certificate into your OS/browser trust store.
+Node does not read that store, so the server-rendered initial page load rejects the certificate
+and the fetch throws. Confirm with:
+
+```bash
+node -e "fetch('https://localhost:5001/api/links').then(r=>r.text()).then(console.log).catch(e=>console.log('FAILED:', e.cause?.code ?? e.message))"
+```
+
+A TLS error code there (e.g. `UNABLE_TO_VERIFY_LEAF_SIGNATURE`) confirms it. Three fixes:
+
+1. **Use HTTP for the frontend (simplest).** Set `NEXT_PUBLIC_API_BASE_URL=http://localhost:5000`
+   in `.env.local` and restart the dev server. Postman can keep using HTTPS.
+2. **Disable Node TLS verification for local dev.** Add `NODE_TLS_REJECT_UNAUTHORIZED=0` to
+   `.env.local`. Local development only — never in production or CI.
+3. **Export the cert and point Node at it.**
+   ```bash
+   dotnet dev-certs https --export-path ./localhost.crt --format PEM --no-password
+   ```
+   then set `NODE_EXTRA_CA_CERTS=./localhost.crt` in `.env.local`.
+
+Note that CORS cannot cause a failure on the *initial* page load, because that fetch runs on the
+server, where CORS does not apply. CORS only affects the browser-side calls (create, update,
+delete, and Retry). The error banner distinguishes between the two cases, and the full underlying
+error is always logged to the terminal running `npm run dev`.
+
 ## Notes
 
 - Manual codes must match `^[a-zA-Z0-9_-]{3,20}$`; duplicates surface as a `409` error inline in

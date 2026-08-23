@@ -3,6 +3,7 @@
 import { ShortLink } from "@/lib/types";
 import { LinkRow } from "./LinkRow";
 import { LinkCard } from "./LinkCard";
+import { useState } from "react";
 
 interface LinksTableProps {
   links: ShortLink[];
@@ -24,6 +25,7 @@ const COLUMNS = [
 ];
 
 export function LinksTable({ links, onToggle, onEdit, onShowQr, onDelete }: LinksTableProps) {
+  const [isHidden, setIsHidden] = useState(true);
   return (
     <>
       <div className="hidden overflow-x-auto rounded-xl border border-ink-border bg-ink-surface md:block">
@@ -35,9 +37,14 @@ export function LinksTable({ links, onToggle, onEdit, onShowQr, onDelete }: Link
                   key={col}
                   className="px-4 py-3 font-body text-[11px] font-semibold uppercase tracking-wider text-text-faint"
                 >
-                  {col}
+                  {col} 
                 </th>
               ))}
+              <th> 
+                <button title="LinkCard" onClick={() => setIsHidden(!isHidden)} className="px-4 py-3 font-body text-[11px] font-semibold uppercase tracking-wider text-text-faint">
+                  ⿻
+                </button>
+              </th> 
             </tr>
           </thead>
           <tbody>
@@ -56,19 +63,22 @@ export function LinksTable({ links, onToggle, onEdit, onShowQr, onDelete }: Link
         </table>
       </div>
 
-      <div className="flex flex-col gap-3 md:hidden">
-        {links.map((link) => (
-          <LinkCard
-            key={link.id}
-            link={link}
-            shortUrl={link.shortUrl}
-            onToggle={(next) => onToggle(link.id, next)}
-            onEdit={() => onEdit(link)}
-            onShowQr={() => onShowQr(link)}
-            onDelete={() => onDelete(link.id)}
-          />
-        ))}
+      <div className={`md:block ${isHidden ? 'md:hidden' : ''}`}>
+        <div className="flex flex-col gap-3">
+          {links.map((link) => (
+            <LinkCard
+              key={link.id}
+              link={link}
+              shortUrl={link.shortUrl}
+              onToggle={(next) => onToggle(link.id, next)}
+              onEdit={() => onEdit(link)}
+              onShowQr={() => onShowQr(link)}
+              onDelete={() => onDelete(link.id)}
+            />
+          ))}
+        </div>
       </div>
+      
     </>
   );
 }

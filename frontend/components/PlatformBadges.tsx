@@ -16,7 +16,7 @@ export function PlatformBadges({ iosUrl, androidUrl }: PlatformBadgesProps) {
           title={`iOS → ${iosUrl}`}
           className="inline-flex h-5 w-5 items-center justify-center rounded bg-text/10 font-mono text-[10px] text-text-muted hover:bg-accent-soft hover:text-accent"
         >
-          
+          🍎
         </a>
       )}
       {androidUrl && (

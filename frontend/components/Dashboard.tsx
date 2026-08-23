@@ -38,7 +38,11 @@ export function Dashboard({
       setLinks(latest);
       setApiError(null);
     } catch {
-      setApiError("Couldn't reach the API. Make sure it's running and CORS is configured.");
+      // This call runs in the browser, so unlike the server-rendered initial load,
+      // CORS genuinely is a possible cause here alongside the API being down.
+      setApiError(
+        "Couldn't reach the API from the browser. Check it's running, and that its Cors:AllowedOrigins includes this app's origin."
+      );
     } finally {
       setRefreshing(false);
     }
