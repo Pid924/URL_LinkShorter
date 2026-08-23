@@ -4,7 +4,7 @@ public class UrlShortenerOptions
 {
     public const string SectionName = "UrlShortener";
 
-    public string BaseUrl { get; set; } = "https://localhost:5001";
+    public string BaseUrl { get; set; } = "https://app-urlshortener-dfhpeqe3ede8c2e7.southeastasia-01.azurewebsites.net/";
 
     public int DefaultCodeLength { get; set; } = 6;
 

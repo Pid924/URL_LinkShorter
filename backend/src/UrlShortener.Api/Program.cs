@@ -24,7 +24,7 @@ builder.Services.AddSingleton<IPlatformDetector, PlatformDetector>();
 // Allows the Next.js frontend (running on a different origin/port) to call this API from the browser.
 const string FrontendCorsPolicy = "FrontendCorsPolicy";
 var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
-    ?? new[] { "http://localhost:3000" };
+    ?? new[] { "https://app-urlshortener-dfhpeqe3ede8c2e7.southeastasia-01.azurewebsites.net/" };
 
 builder.Services.AddCors(options =>
 {
