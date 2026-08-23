@@ -35,6 +35,7 @@ supported Platform-specific destination e.g. iOS, Android, or a default .
 
 ## Tech Stack
 Backend: C#, .NET 8, ASP.NET Core Web API, Entity Framework Core (InMemory provider), xUnit
+
 Frontend: Next.js, React, TypeScript, Tailwind CSS, Jest Testing Library
 
 ## Clone Repository
