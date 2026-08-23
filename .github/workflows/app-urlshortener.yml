@@ -48,9 +48,9 @@ jobs:
     - name: Azure Login
       uses: azure/login@v2
       with:
-        client-id: ${{ vars.app_urlshortener_CLIENT_ID_3494 }}
-        tenant-id: ${{ vars.app_urlshortener_TENANT_ID_3494 }}
-        subscription-id: ${{ vars.app_urlshortener_SUBSCRIPTION_ID_3494 }}
+        client-id: ${{ vars.app_urlshortener_CLIENT_ID_A0F4 }}
+        tenant-id: ${{ vars.app_urlshortener_TENANT_ID_A0F4 }}
+        subscription-id: ${{ vars.app_urlshortener_SUBSCRIPTION_ID_A0F4 }}
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
