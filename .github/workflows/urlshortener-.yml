@@ -14,7 +14,7 @@ env:
   WORKING_DIRECTORY: backend\src\UrlShortener.Api
 jobs:
   build:
-    environment: urlshortener__Env
+    environment: app_urlshortener__Env
     runs-on: windows-latest
     steps:
     - name: Checkout Code
@@ -37,7 +37,7 @@ jobs:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
   deploy:
-    environment: urlshortener__Env
+    environment: app_urlshortener__Env
     runs-on: windows-latest
     needs: build
     steps:
