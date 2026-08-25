@@ -1,4 +1,4 @@
-name: 3 Build and deploy .NET Core application to Web App urlshortener- with API Management Service UrlShortenerApi001-UrlShortenerApi
+name: 4 Build and deploy .NET Core application to Web App urlshortener- with API Management Service UrlShortenerApi001-UrlShortenerApi
 on:
   push:
     branches:
