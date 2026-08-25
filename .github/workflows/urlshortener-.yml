@@ -11,7 +11,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: src\UrlShortener.Api\publish
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 8.0.x
-  WORKING_DIRECTORY: src\UrlShortener.Api
+  WORKING_DIRECTORY: backend\src\UrlShortener.Api
 jobs:
   build:
     environment: urlshortener__Env
