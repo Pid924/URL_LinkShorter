@@ -68,6 +68,7 @@ jobs:
         client-id: ${{ vars.UrlShortenerApi001_CLIENT_ID_92F5 }}
         tenant-id: ${{ vars.UrlShortenerApi001_TENANT_ID_92F5 }}
         subscription-id: ${{ vars.UrlShortenerApi001_SUBSCRIPTION_ID_92F5 }}
+    - run: az account show
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
