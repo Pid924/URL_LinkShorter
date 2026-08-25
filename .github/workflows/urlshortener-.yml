@@ -8,7 +8,7 @@ permissions:
   contents: read
 env:
   AZURE_WEBAPP_NAME: urlshortener-
-  AZURE_WEBAPP_PACKAGE_PATH: src\UrlShortener.Api\publish
+  AZURE_WEBAPP_PACKAGE_PATH: backend\src\UrlShortener.Api\publish
   AZURE_APIM_RESOURCE_PATH: /
   AZURE_APIM_RESOURCEGROUP: rg-urlshortener-dev-001
   AZURE_APIM_SERVICENAME: UrlShortenerApi001
